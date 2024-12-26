@@ -50,6 +50,7 @@ import todolist from "./todolist.png";
 import fasil from "./fasil.jpg";
 import ranjith from "./ranjith.jpg";
 import mashhoor from "./mashhoor.jpg";
+import sachin from "./sachin.jpg";
 
 export {
   logo,
@@ -98,5 +99,6 @@ export {
   live,
   fasil,
   ranjith,
-  mashhoor
+  mashhoor,
+  sachin
 };

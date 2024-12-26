@@ -41,6 +41,7 @@ import {
     fasil,
     ranjith,
     mashhoor,
+    sachin
   } from "../assets";
   
   export const navLinks = [
@@ -192,7 +193,7 @@ import {
   const testimonials = [
     {
       testimonial:
-        'I thought the transition from Zero to Hero required effort. But Faizu said, "When you embrace challenges, efforts are nothing".',
+        'I thought the transition from Zero to Hero requires a lot of efforts. But Faizu indirectly said "When you embrace the challenges, efforts are no more efforts."',
       name: "Fasil Valiyattil",
       designation: "Web Developer",
       company: "Aquacodes Technologies Pvt Ltd",
@@ -208,7 +209,15 @@ import {
     },
     {
       testimonial:
-        "Faizu Rahman is a skilled web developer passionate about creating responsive, user-friendly websites that stand out!",
+        'Faizu Rahman is an outstanding full-stack developer who inspired and guided me when I needed it most. His support laid the foundation for my journey as a full-stack developer at Aquacodes Technologies.',
+      name: "Sachin Kizhakkepurath",
+      designation: "Full-Stack Developer",
+      company: "Aquacodes Technologies Pvt Ltd",
+      image: sachin,
+    },
+    {
+      testimonial:
+        "Faizu Rahman is an incredibly talented web developer with a passion for creating clean, responsive, and user-friendly websites. His skills and dedication make him a great choice for any project, and his work speaks for itself!",
       name: "Mashhoor Khan",
       designation: "Software Engineer",
       company: "Naav Innovations",

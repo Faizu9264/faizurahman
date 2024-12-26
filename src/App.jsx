@@ -9,7 +9,9 @@ import {
   Tech,
   Works,
   StarsCanvas,
+  WhatsAppButton,
 } from "./components";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -27,6 +29,7 @@ const App = () => {
           <Contact />
           <StarsCanvas />
         </div>
+        <WhatsAppButton />
       </div>
     </BrowserRouter>
   );
