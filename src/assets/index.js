@@ -31,6 +31,7 @@ import tesla from "./company/tesla.png";
 import home from "./company/home.png";
 import brototype from "./company/brototype.png";
 import finalapps from "./company/finalapps.jpg";
+import freelancer from "./company/freelancer.png";
 
 
 import carrent from "./carrent.png";
@@ -85,6 +86,7 @@ export {
   home,
   brototype,
   finalapps,
+  freelancer,
   aws,
   hfhub,
   staycation,
