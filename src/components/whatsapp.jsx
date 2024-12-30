@@ -283,14 +283,10 @@
 
 // export default SectionWrapper(WhatsAppButton, "");
 
-
-
-
 import React, { useEffect, useState } from "react";
 import EmojiPicker from "emoji-picker-react";
 import { SectionWrapper } from "../hoc";
-import { Send,Phone } from 'lucide-react';
-
+import { Send, Phone } from "lucide-react";
 
 const WhatsAppButton = () => {
   const [showWidget, setShowWidget] = useState(false);
@@ -302,7 +298,7 @@ const WhatsAppButton = () => {
   const [typing, setTyping] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [formattedTime, setFormattedTime] = useState(""); 
+  const [formattedTime, setFormattedTime] = useState("");
 
   const phoneNumber = "+91 6282821603";
   const formattedNumber = phoneNumber.replace(/\D/g, "");
@@ -330,6 +326,8 @@ const WhatsAppButton = () => {
         // Reset all messages and typing indicators when the widget is closed
         setInitialMessage("");
         setTyping(false);
+        setShowEmojiPicker(false);
+        setUserMessage("");
       }
 
       return nextState;
@@ -349,10 +347,11 @@ const WhatsAppButton = () => {
     setUserMessage("");
     setShowWidget(false);
     setShowWarning(false);
+    setUserMessage("");
   };
 
   const handleCall = () => {
-    window.open(`tel:${formattedNumber}`, '_self');
+    window.open(`tel:${formattedNumber}`, "_self");
   };
 
   const handleUserMessageChange = (e) => {
@@ -382,7 +381,9 @@ const WhatsAppButton = () => {
     }
 
     // Add this line to set the formatted time
-    setFormattedTime(time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+    setFormattedTime(
+      time.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+    );
   };
 
   useEffect(() => {
@@ -412,7 +413,7 @@ const WhatsAppButton = () => {
   return (
     <div>
       {/* WhatsApp Floating Button */}
-      <div className="indicator fixed bottom-20  right-8 z-50 ">
+      <div className="indicator fixed  bottom-20 right-8 z-50 ">
         <button
           onClick={toggleWidget}
           className="skeleton shrink-0 mask mask-hexagon fixed bottom-8 right-6  flex h-14 w-14 items-center justify-center rounded-full bg-emerald-400 text-white shadow-lg transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
@@ -470,7 +471,6 @@ const WhatsAppButton = () => {
                       alt="Blue Tick"
                       className="h-8 w-8"
                     />
-           
                   </div>
                 </div>
 
@@ -480,12 +480,12 @@ const WhatsAppButton = () => {
                 </div>
               </div>
             </div>
-   
+
             <button
               onClick={toggleWidget}
               className="text-xl font-bold focus:outline-none"
             >
-              <span className="flex items-center  justify-center w-6 h-6 text-xl font-bold bg-red-300 rounded-full hover:bg-gray-200">
+              <span className="flex items-center  justify-center w-6 h-6 text-xl font-bold bg-red-400 rounded-full hover:bg-red-300">
                 &times;
               </span>
             </button>
@@ -509,7 +509,9 @@ const WhatsAppButton = () => {
                   <div className="chat-header">
                     Faizu <time className="text-xs opacity-50">{timeAgo}</time>
                   </div>
-                  <div className="chat-bubble relative"> {/* Updated chat bubble */}
+                  <div className="chat-bubble relative">
+                    {" "}
+                    {/* Updated chat bubble */}
                     {initialMessage}
                     <span className="absolute bottom-1 right-2 text-xs text-gray-400">
                       {formattedTime}
@@ -539,31 +541,46 @@ const WhatsAppButton = () => {
                   </p>
                 </div>
               ) : (
-                ""
+                <>
+                  <div className="chat chat-end">
+                    <div
+                      className="chat-bubble bg-blue-100 text-blue-900 px-3 py-2 rounded-lg cursor-pointer hover:bg-blue-200"
+                      onClick={() => {
+                        // Directly send the message to WhatsApp
+                        const message = "I want to know about your services!";
+                        const encodedMessage = encodeURIComponent(message);
+                        const whatsappUrl = `https://wa.me/${formattedNumber}?text=${encodedMessage}`;
+                        window.open(whatsappUrl, "_blank");
+                      }}
+                    >
+                      I want to know about your services!
+                    </div>
+                  </div>
+                </>
               )}
             </div>
             <div className="chat chat-end"></div>
           </div>
           <div className="relative flex items-center space-x-2">
-                             {/* Call button */}
-                             <button
-                      onClick={handleCall}
-                      className="p-2 rounded-full bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-                      aria-label="Call Faizu Rahman"
-                    >
-                      <Phone className="h-4 w-4" />
-                    </button>
+            {/* Call button */}
+            <button
+              onClick={handleCall}
+              className="p-2 rounded-full bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+              aria-label="Call Faizu Rahman"
+            >
+              <Phone className="h-4 w-4" />
+            </button>
             {/* Emoji Button */}
             <button
               onClick={() => setShowEmojiPicker((prev) => !prev)}
-              className="absolute left-9 top-1.5 p-1 rounded-md  bg-gray-500 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="absolute left-9 top-1.5 p-1 rounded-md  bg-amber-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
             >
               {showEmojiPicker ? "❌" : "😊"}
             </button>
 
             {/* Emoji Picker */}
             {showEmojiPicker && (
-              <div className="absolute bottom-12 left-0 right-0 flex justify-center">
+              <div className="absolute bottom-12 left-0 right-0 z-50 flex justify-center">
                 <EmojiPicker onEmojiClick={onEmojiClick} />
               </div>
             )}
@@ -580,7 +597,7 @@ const WhatsAppButton = () => {
             {/* Send Button */}
             <button
               onClick={handleSendMessage}
-              className="flex-shrink-0 rounded-full bg-gray-500 p-3 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="flex-shrink-0 rounded-full bg-emerald-500 p-2 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
               disabled={showWarning}
             >
               <Send className="h-5 w-5" />
@@ -593,4 +610,3 @@ const WhatsAppButton = () => {
 };
 
 export default SectionWrapper(WhatsAppButton, "");
-
