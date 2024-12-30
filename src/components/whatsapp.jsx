@@ -434,7 +434,7 @@ const WhatsAppButton = () => {
 
       {/* WhatsApp Pop-up Widget */}
       {showWidget && (
-        <div className="fixed bottom-24 right-6 z-50 w-80 bg-amber-50 shadow-lg rounded-lg border p-4 ">
+        <div className="fixed bottom-24 right-6 z-50 w-80 bg-gray-100 shadow-lg rounded-lg border p-4 ">
           <div className="sticky-header flex items-center justify-between border-b pb-2 skeleton p-2">
             <div className="flex items-center space-x-2 ">
               <div className="flex items-center text-center flex-col space-y">
@@ -491,9 +491,9 @@ const WhatsAppButton = () => {
             </button>
           </div>
 
-          <div className="messages-container mt-4 space-y">
-            <div className="flex justify-center">
-              <div className="badge badge-ghost">Today</div>
+          <div className="messages-container  mt-4 mb-4 space-y bg-[url('/whatsapp-bg.jpg')]">
+            <div className="flex justify-center m-3">
+              <div className="badge badge-neutral">Today</div>
             </div>
             {/* Display Faizu's initial message */}
             <div className="chat chat-start ">
